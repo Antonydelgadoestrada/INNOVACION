@@ -1,0 +1,89 @@
+// Prisma Schema para Producción con Supabase (PostgreSQL)
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Institution {
+  id                  String            @id @default(uuid())
+  name                String            // Nombre oficial de la universidad o instituto
+  ruc                 String            @unique // RUC de la institución
+  email               String            @unique // Correo institucional
+  passwordHash        String?           // Contraseña con hash seguro
+  status              String            @default("PENDING") // PENDING, APPROVED, SUSPENDED
+  publicKey           String?           // Clave pública Ed25519 (hex)
+  encryptedPrivateKey String?           // Clave privada cifrada con AES-256-GCM
+  mfaSecret           String?           // Secreto TOTP
+  mfaEnabled          Boolean           @default(false)
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+
+  credentials         Credential[]
+
+  @@map("institutions")
+}
+
+model Credential {
+  id                  String            @id // UUID v4 público
+  institutionId       String
+  recipientName       String            // Nombre completo del titular
+  recipientIdMasked   String            // Documento de identidad enmascarado (p. ej. ****1234)
+  recipientEmail      String            // Correo del titular
+  programName         String            // Nombre del programa académico
+  credentialType      String            // Tipo: Certificado, Diploma, Grado
+  issueDate           DateTime          // Fecha de emisión
+  salt                String            // Sal aleatoria criptográfica
+  dataHash            String            // SHA-256 del JSON canónico con sal (hex)
+  signature           String            // Firma digital Ed25519 (hex)
+  fileHash            String            // SHA-256 del archivo PDF generado (hex)
+  pdfPath             String?           // Ruta o URL del PDF en almacenamiento Supabase
+  status              String            @default("ACTIVE") // ACTIVE, REVOKED
+  revokeReason        String?           // Motivo de revocación
+  txHash              String?           // Hash de la transacción en Blockchain
+  network             String            @default("localhost") // localhost o sepolia
+  recipientToken      String            @unique @default(uuid()) // Token privado del titular
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+
+  institution         Institution       @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  verificationLogs    VerificationLog[]
+
+  @@index([institutionId])
+  @@index([dataHash])
+  @@index([fileHash])
+  @@map("credentials")
+}
+
+model VerificationLog {
+  id                  String            @id @default(uuid())
+  credentialId        String?
+  queriedIdentifier   String
+  result              String            // VALIDA, ALTERADA, REVOCADA, NO_RECONOCIDA
+  method              String            // QR, PDF, MANUAL_ID
+  ipAnonymized        String
+  queriedAt           DateTime          @default(now())
+
+  credential          Credential?       @relation(fields: [credentialId], references: [id], onDelete: SetNull)
+
+  @@index([queriedIdentifier])
+  @@index([queriedAt])
+  @@map("verification_logs")
+}
+
+model AuditLog {
+  id                  String            @id @default(uuid())
+  user                String
+  role                String            // ADMIN, INSTITUTION, SYSTEM
+  action              String
+  detail              String
+  timestamp           DateTime          @default(now())
+
+  @@index([user])
+  @@index([timestamp])
+  @@map("audit_logs")
+}

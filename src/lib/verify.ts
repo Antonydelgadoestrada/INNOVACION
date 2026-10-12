@@ -1,0 +1,273 @@
+import { prisma } from "./prisma";
+import {
+  calculateDataHash,
+  calculateSha256,
+  verifyEd25519Signature,
+  hashToBytes32,
+  CredentialPayload,
+} from "./crypto";
+import { getCredentialFromChain, getExplorerTxUrl } from "./blockchain";
+
+export type VerificationStatus = "VALIDA" | "ALTERADA" | "REVOCADA" | "NO_RECONOCIDA";
+
+export interface VerificationEvidence {
+  credentialId: string;
+  status: VerificationStatus;
+  statusColor: "green" | "yellow" | "red" | "gray";
+  statusTitle: string;
+  statusMessage: string;
+  institutionName?: string;
+  institutionRuc?: string;
+  recipientName?: string;
+  recipientIdMasked?: string;
+  programName?: string;
+  credentialType?: string;
+  issueDate?: string;
+  // Detalles criptográficos y evidencia (RF-09)
+  dataHashStored?: string;
+  dataHashCalculated?: string;
+  dataHashMatches: boolean;
+  fileHashStored?: string;
+  fileHashUploaded?: string;
+  fileHashMatches: boolean;
+  isSignatureVerified: boolean;
+  isRevokedOnChain: boolean;
+  revocationReason?: string;
+  revocationDate?: string;
+  txHash?: string;
+  explorerUrl?: string;
+  queriedAt: string;
+  method: "QR" | "PDF" | "MANUAL_ID";
+}
+
+/**
+ * Extrae un UUID embebido en el texto de un buffer de PDF.
+ */
+export function extractUuidFromPdfBuffer(buffer: Buffer): string | null {
+  const content = buffer.toString("latin1");
+  const uuidRegex = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i;
+  const match = content.match(uuidRegex);
+  return match ? match[0].toLowerCase() : null;
+}
+
+/**
+ * Función principal de verificación de credenciales digitales VeriChain.
+ * Cumple estrictamente con la lógica de 4 estados y RF-07, RF-08, RF-09, RF-13.
+ */
+export async function verifyCredential(params: {
+  credentialId?: string;
+  pdfBuffer?: Buffer;
+  method: "QR" | "PDF" | "MANUAL_ID";
+  clientIp?: string;
+}): Promise<VerificationEvidence> {
+  const { method, clientIp = "127.0.0.1" } = params;
+  let queryId = params.credentialId?.trim().toLowerCase();
+  let uploadedFileHash: string | undefined;
+
+  // Si se subió un archivo PDF, calculamos su hash SHA-256
+  if (params.pdfBuffer) {
+    uploadedFileHash = calculateSha256(params.pdfBuffer);
+    // Si no venía un id explícito, lo extraemos del contenido del PDF
+    if (!queryId) {
+      const extractedId = extractUuidFromPdfBuffer(params.pdfBuffer);
+      if (extractedId) {
+        queryId = extractedId;
+      }
+    }
+  }
+
+  const nowIso = new Date().toISOString();
+  const anonymizedIp = calculateSha256(clientIp).slice(0, 16);
+
+  // CASO 1: No hay ID y no se pudo deducir -> NO RECONOCIDA
+  if (!queryId) {
+    await prisma.verificationLog.create({
+      data: {
+        credentialId: null,
+        queriedIdentifier: "DESCONOCIDO",
+        result: "NO_RECONOCIDA",
+        method: method,
+        ipAnonymized: anonymizedIp,
+      },
+    });
+
+    return {
+      credentialId: "N/A",
+      status: "NO_RECONOCIDA",
+      statusColor: "gray",
+      statusTitle: "NO RECONOCIDA",
+      statusMessage: "El identificador no existe en el sistema ni en Blockchain, o el archivo/QR no tiene el formato de VeriChain.",
+      dataHashMatches: false,
+      fileHashMatches: false,
+      isSignatureVerified: false,
+      isRevokedOnChain: false,
+      queriedAt: nowIso,
+      method: method,
+    };
+  }
+
+  // 1. Buscar en la Base de Datos
+  const dbCredential = await prisma.credential.findUnique({
+    where: { id: queryId },
+    include: { institution: true },
+  });
+
+  // 2. Consultar en Blockchain (Ethereum / Hardhat)
+  let chainRecord: any = null;
+  try {
+    chainRecord = await getCredentialFromChain(queryId);
+  } catch (err) {
+    console.warn("No se pudo consultar Blockchain directamente:", err);
+  }
+
+  // Si no existe en la base de datos y tampoco en Blockchain -> NO RECONOCIDA
+  if (!dbCredential && !chainRecord) {
+    await prisma.verificationLog.create({
+      data: {
+        credentialId: null,
+        queriedIdentifier: queryId,
+        result: "NO_RECONOCIDA",
+        method: method,
+        ipAnonymized: anonymizedIp,
+      },
+    });
+
+    return {
+      credentialId: queryId,
+      status: "NO_RECONOCIDA",
+      statusColor: "gray",
+      statusTitle: "NO RECONOCIDA",
+      statusMessage: "El identificador no existe en el registro del sistema ni en la Blockchain de VeriChain.",
+      dataHashMatches: false,
+      fileHashMatches: false,
+      isSignatureVerified: false,
+      isRevokedOnChain: false,
+      queriedAt: nowIso,
+      method: method,
+    };
+  }
+
+  // Si existe en DB, preparamos recálculo de datos canónicos y validación de firma
+  let dataHashCalculated = "";
+  let isSignatureVerified = false;
+  let dataHashMatches = false;
+  let fileHashMatches = true;
+
+  if (dbCredential) {
+    // Reconstruir payload original para recalcular hash canónico
+    const payload: CredentialPayload = {
+      id: dbCredential.id,
+      institutionName: dbCredential.institution.name,
+      institutionRuc: dbCredential.institution.ruc,
+      recipientName: dbCredential.recipientName,
+      recipientIdMasked: dbCredential.recipientIdMasked,
+      recipientEmail: dbCredential.recipientEmail,
+      programName: dbCredential.programName,
+      credentialType: dbCredential.credentialType,
+      issueDate: dbCredential.issueDate.toISOString().split("T")[0],
+      salt: dbCredential.salt,
+    };
+
+    dataHashCalculated = calculateDataHash(payload);
+    dataHashMatches = dataHashCalculated.toLowerCase() === dbCredential.dataHash.toLowerCase();
+
+    // Si tenemos registro en Blockchain, verificar que coincida con la Blockchain
+    if (chainRecord) {
+      const chainDataHashClean = chainRecord.dataHash.replace(/^0x/, "").toLowerCase();
+      if (chainDataHashClean !== dataHashCalculated.toLowerCase()) {
+        dataHashMatches = false;
+      }
+    }
+
+    // Verificar firma Ed25519 con la clave pública de la institución
+    if (dbCredential.institution.publicKey) {
+      isSignatureVerified = verifyEd25519Signature(
+        dataHashCalculated,
+        dbCredential.signature,
+        dbCredential.institution.publicKey
+      );
+    }
+
+    // Si se subió un PDF para verificación de archivo:
+    if (uploadedFileHash) {
+      const cleanDbFileHash = dbCredential.fileHash.toLowerCase();
+      fileHashMatches = uploadedFileHash.toLowerCase() === cleanDbFileHash;
+      if (chainRecord) {
+        const cleanChainFileHash = chainRecord.fileHash.replace(/^0x/, "").toLowerCase();
+        if (uploadedFileHash.toLowerCase() !== cleanChainFileHash) {
+          fileHashMatches = false;
+        }
+      }
+    }
+  }
+
+  // 3. Determinar el estado final según las reglas de negocio
+  let finalStatus: VerificationStatus = "VALIDA";
+  let statusColor: "green" | "yellow" | "red" | "gray" = "green";
+  let statusTitle = "CREDENCIAL VÁLIDA";
+  let statusMessage = "La credencial es auténtica. Los datos y el archivo coinciden con la huella registrada en Blockchain y la firma digital es legítima.";
+
+  const isRevoked =
+    (chainRecord && chainRecord.isRevoked) ||
+    (dbCredential && dbCredential.status === "REVOKED");
+
+  if (isRevoked) {
+    finalStatus = "REVOCADA";
+    statusColor = "red";
+    statusTitle = "CREDENCIAL REVOCADA";
+    statusMessage = `Esta credencial fue formalmente revocada por la institución emisora. Motivo: ${dbCredential?.revokeReason || "Revocada por la institución"}.`;
+  } else if (!dataHashMatches || !isSignatureVerified || !fileHashMatches) {
+    finalStatus = "ALTERADA";
+    statusColor = "yellow";
+    statusTitle = "CREDENCIAL ALTERADA";
+    statusMessage = "ALERTA DE SEGURIDAD: El hash recalculado del documento no coincide con el registrado en Blockchain o la firma digital no es válida. El documento ha sido modificado o adulterado.";
+  }
+
+  // Guardar log de verificación (RF-13)
+  try {
+    await prisma.verificationLog.create({
+      data: {
+        credentialId: dbCredential ? dbCredential.id : null,
+        queriedIdentifier: queryId,
+        result: finalStatus,
+        method: method,
+        ipAnonymized: anonymizedIp,
+      },
+    });
+  } catch (logErr) {
+    console.error("Error al guardar log de verificación:", logErr);
+  }
+
+  const txHash = dbCredential?.txHash || "0x0000000000000000000000000000000000000000000000000000000000000000";
+
+  return {
+    credentialId: queryId,
+    status: finalStatus,
+    statusColor,
+    statusTitle,
+    statusMessage,
+    institutionName: dbCredential?.institution.name,
+    institutionRuc: dbCredential?.institution.ruc,
+    recipientName: dbCredential?.recipientName,
+    recipientIdMasked: dbCredential?.recipientIdMasked,
+    programName: dbCredential?.programName,
+    credentialType: dbCredential?.credentialType,
+    issueDate: dbCredential?.issueDate.toISOString().split("T")[0],
+    dataHashStored: dbCredential?.dataHash || (chainRecord ? chainRecord.dataHash : undefined),
+    dataHashCalculated: dataHashCalculated || undefined,
+    dataHashMatches,
+    fileHashStored: dbCredential?.fileHash || (chainRecord ? chainRecord.fileHash : undefined),
+    fileHashUploaded: uploadedFileHash,
+    fileHashMatches,
+    isSignatureVerified,
+    isRevokedOnChain: Boolean(chainRecord?.isRevoked || dbCredential?.status === "REVOKED"),
+    revocationReason: dbCredential?.revokeReason || undefined,
+    revocationDate: chainRecord?.revokedAt
+      ? new Date(chainRecord.revokedAt * 1000).toISOString()
+      : undefined,
+    txHash: txHash,
+    explorerUrl: getExplorerTxUrl(txHash),
+    queriedAt: nowIso,
+    method: method,
+  };
+}
