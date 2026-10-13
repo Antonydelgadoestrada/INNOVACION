@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
-import { generateCertificatePdf } from "@/lib/pdf";
+import { generateCertificatePdf, formatIssueDate } from "@/lib/pdf";
 import { generateQrDataUrl, getVerificationUrl } from "@/lib/qr";
 import Link from "next/link";
 import {
@@ -48,13 +48,7 @@ export default async function HolderViewPage({ params }: HolderViewPageProps) {
     );
   }
 
-  // Generar PDF y QR en base64 para descarga instantánea
-  const months = [
-    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-  ];
-  const dateParts = credential.issueDate.toISOString().split("T")[0].split("-");
-  const formattedDate = `${dateParts[2]} de ${months[parseInt(dateParts[1], 10) - 1]} de ${dateParts[0]}`;
+  const formattedDate = formatIssueDate(credential.issueDate);
 
   const { pdfBuffer } = await generateCertificatePdf({
     id: credential.id,

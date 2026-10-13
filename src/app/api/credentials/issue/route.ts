@@ -8,7 +8,7 @@ import {
   decryptPrivateKey,
   CredentialPayload,
 } from "@/lib/crypto";
-import { generateCertificatePdf } from "@/lib/pdf";
+import { generateCertificatePdf, formatIssueDate } from "@/lib/pdf";
 import { registerCredentialOnChain } from "@/lib/blockchain";
 import { z } from "zod";
 
@@ -105,12 +105,7 @@ export async function POST(req: NextRequest) {
     const signature = signHashWithEd25519(dataHash, privateKey);
 
     // 6. Formatear Fecha Legible y Generar PDF Oficial con QR incrustado
-    const [year, month, day] = issueDate.split("-");
-    const months = [
-      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-    ];
-    const formattedDate = `${day} de ${months[parseInt(month, 10) - 1]} de ${year}`;
+    const formattedDate = formatIssueDate(issueDate);
 
     const { pdfBuffer, fileHash } = await generateCertificatePdf({
       id: credentialId,

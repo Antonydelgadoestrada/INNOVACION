@@ -13,6 +13,19 @@ export interface CertificatePdfData {
   dataHash: string;           // Hash de datos canónicos
 }
 
+const MONTH_NAMES = [
+  "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+];
+
+export function formatIssueDate(date: Date | string): string {
+  const dateStr = typeof date === "string" ? date.split("T")[0] : date.toISOString().split("T")[0];
+  const [year, month, day] = dateStr.split("-");
+  const monthIdx = parseInt(month, 10) - 1;
+  const monthName = MONTH_NAMES[monthIdx] || month;
+  return `${day} de ${monthName} de ${year}`;
+}
+
 /**
  * Genera el documento PDF oficial del certificado con:
  * - Diseño académico premium (orientación horizontal)
@@ -28,6 +41,15 @@ export async function generateCertificatePdf(
 ): Promise<{ pdfBuffer: Buffer; fileHash: string }> {
   // Crear documento PDF en formato horizontal (Landscape Letter: 792 x 612 pt)
   const pdfDoc = await PDFDocument.create();
+  // Fechas deterministas (Unix epoch) para garantizar que el hash SHA-256 del PDF sea reproducible
+  pdfDoc.setCreationDate(new Date(0));
+  pdfDoc.setModificationDate(new Date(0));
+  pdfDoc.setTitle(data.id);
+  pdfDoc.setSubject(`VERICHAIN-ID:${data.id}`);
+  pdfDoc.setKeywords([data.id, data.dataHash]);
+  pdfDoc.setProducer("VeriChain Platform");
+  pdfDoc.setAuthor(data.institutionName);
+
   const page = pdfDoc.addPage([792, 612]);
   const { width, height } = page.getSize();
 

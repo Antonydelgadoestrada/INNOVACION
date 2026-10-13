@@ -9,7 +9,7 @@ import {
   decryptPrivateKey,
   CredentialPayload,
 } from "@/lib/crypto";
-import { generateCertificatePdf } from "@/lib/pdf";
+import { generateCertificatePdf, formatIssueDate } from "@/lib/pdf";
 import { registerCredentialOnChain } from "@/lib/blockchain";
 
 export async function POST(req: NextRequest) {
@@ -130,11 +130,7 @@ export async function POST(req: NextRequest) {
         const dataHash = calculateDataHash(payload);
         const signature = signHashWithEd25519(dataHash, privateKey);
 
-        const dateParts = issueDate.split("-");
-        const formattedDate =
-          dateParts.length === 3
-            ? `${dateParts[2]} de ${months[parseInt(dateParts[1], 10) - 1]} de ${dateParts[0]}`
-            : issueDate;
+        const formattedDate = formatIssueDate(issueDate);
 
         const { fileHash } = await generateCertificatePdf({
           id: credentialId,
