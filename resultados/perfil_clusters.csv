@@ -1,0 +1,5 @@
+cluster,segmento,n,verificaciones_mes,pct_no_validas,hora_media_consulta,instituciones_distintas,intervalo_medio_min
+0,Reclutadores de alto volumen,231,137.6,3.9,11.0,13.8,141.6
+1,Verificadores ocasionales,269,7.7,6.3,15.0,3.1,2630.8
+2,Instituciones académicas,70,59.1,12.7,9.8,29.7,406.4
+3,Patrón anómalo (posible scraping),30,422.8,38.2,3.8,45.2,2.9

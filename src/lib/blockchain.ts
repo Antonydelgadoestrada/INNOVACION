@@ -156,11 +156,16 @@ export async function getCredentialFromChain(
       revokedAt: Number(record[5]),
     };
   } catch (error: any) {
-    // Si la credencial no existe o revierte, retornamos null
-    if (error?.message?.includes("Credencial no encontrada")) {
+    // Si la credencial no existe o el nodo local aún no tiene el contrato desplegado
+    if (
+      error?.message?.includes("Credencial no encontrada") ||
+      error?.code === "BAD_DATA" ||
+      error?.code === "ECONNREFUSED" ||
+      error?.message?.includes("could not decode result data")
+    ) {
       return null;
     }
-    console.error("Aviso al consultar Blockchain:", error?.message || error);
+    console.warn("Aviso al consultar Blockchain:", error?.shortMessage || error?.message || error);
     return null;
   }
 }

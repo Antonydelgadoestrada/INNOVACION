@@ -1,0 +1,1929 @@
+{
+  "features": [
+    "log_verificaciones_mes",
+    "pct_no_validas",
+    "hora_media_consulta",
+    "instituciones_distintas",
+    "log_intervalo_medio_min"
+  ],
+  "scaler_mean": [
+    3.5877675496023227,
+    7.4908319556998455,
+    12.008881945600002,
+    12.451083809110347,
+    6.1604643904521215
+  ],
+  "scaler_scale": [
+    1.4846616068107872,
+    8.056294063201198,
+    3.456431142556785,
+    12.253190068945814,
+    1.7524330481236592
+  ],
+  "cluster_centers": [
+    [
+      0.9008190922958966,
+      -0.4292249805750555,
+      -0.3225183339670102,
+      0.10398217013058579,
+      -0.7138964181954809
+    ],
+    [
+      1.602711744799121,
+      3.7852079163632704,
+      -2.575584442206412,
+      2.724033263648076,
+      -2.6918097836923316
+    ],
+    [
+      -1.0243516194020108,
+      -0.21871946703907394,
+      0.7183819172967352,
+      -0.7658347638342159,
+      0.9254090374271627
+    ],
+    [
+      0.30435990952162656,
+      0.631710916313069,
+      -0.6073766798787584,
+      1.4448355599394491,
+      -0.0701424344229273
+    ]
+  ],
+  "pca_components": [
+    [
+      -0.44586584293243436,
+      -0.3642027784244908,
+      0.45964853281019463,
+      -0.4727335273549725,
+      0.4835351328435112
+    ],
+    [
+      -0.5365578136134392,
+      0.7573349983898919,
+      -0.009300869816362745,
+      0.22029485331766258,
+      0.2998884530730665
+    ]
+  ],
+  "pca_explained_variance_ratio": [
+    0.7179645966853923,
+    0.16316846090954512
+  ],
+  "clusters": {
+    "0": {
+      "verificaciones_mes": 139.28724965860027,
+      "pct_no_validas": 4.0328692929153735,
+      "hora_media_consulta": 10.8941195320309,
+      "instituciones_distintas": 13.725197103501875,
+      "intervalo_medio_min": 142.31124443332536,
+      "n": 230,
+      "segmento": "Reclutadores de alto volumen",
+      "pca_center": [
+        -0.7879144699103451,
+        -0.9965914771490977
+      ]
+    },
+    "1": {
+      "verificaciones_mes": 403.0207400089235,
+      "pct_no_validas": 37.98558002027944,
+      "hora_media_consulta": 3.106551669273016,
+      "instituciones_distintas": 45.82918114272101,
+      "intervalo_medio_min": 3.4842042835057536,
+      "n": 30,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)",
+      "pca_center": [
+        -5.86636772781916,
+        1.823525933449747
+      ]
+    },
+    "2": {
+      "verificaciones_mes": 8.019160298191567,
+      "pct_no_validas": 5.728763611886424,
+      "hora_media_consulta": 14.49191957679409,
+      "instituciones_distintas": 3.0671648864434617,
+      "intervalo_medio_min": 2584.883844268838,
+      "n": 270,
+      "segmento": "Verificadores ocasionales",
+      "pca_center": [
+        1.6760883812431973,
+        0.48610840909809094
+      ]
+    },
+    "3": {
+      "verificaciones_mes": 58.080275219539274,
+      "pct_no_validas": 12.580080860452211,
+      "hora_media_consulta": 9.90952627400432,
+      "instituciones_distintas": 30.154928543420166,
+      "intervalo_medio_min": 432.6435549267294,
+      "n": 70,
+      "segmento": "Instituciones acad\u00e9micas",
+      "pca_center": [
+        -1.3618929003101268,
+        0.6180141612045084
+      ]
+    }
+  },
+  "sample_points": [
+    {
+      "x": -0.678,
+      "y": -1.29,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.307,
+      "y": -0.91,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.661,
+      "y": -1.003,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.32,
+      "y": -1.557,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.339,
+      "y": -1.277,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.853,
+      "y": -1.145,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.443,
+      "y": -1.356,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.015,
+      "y": -0.543,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.459,
+      "y": -1.368,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.993,
+      "y": -0.488,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.671,
+      "y": -1.043,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.791,
+      "y": -0.808,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.685,
+      "y": -1.01,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.74,
+      "y": -1.048,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.88,
+      "y": -1.057,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.824,
+      "y": -1.303,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.436,
+      "y": -1.053,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.84,
+      "y": -1.056,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.236,
+      "y": -0.956,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.947,
+      "y": -0.991,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.451,
+      "y": -1.094,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.045,
+      "y": -0.975,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.566,
+      "y": -0.68,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.419,
+      "y": -1.168,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.725,
+      "y": -0.896,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.33,
+      "y": -0.864,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.557,
+      "y": -0.752,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.597,
+      "y": -1.221,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.854,
+      "y": -0.752,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.597,
+      "y": -1.096,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.784,
+      "y": -0.858,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.482,
+      "y": -0.8,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.768,
+      "y": -0.952,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.491,
+      "y": -1.072,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.743,
+      "y": -1.358,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.044,
+      "y": -0.429,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.882,
+      "y": -0.63,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.156,
+      "y": -0.994,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.786,
+      "y": -0.983,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.139,
+      "y": -1.009,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.521,
+      "y": -0.681,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.937,
+      "y": -0.644,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.818,
+      "y": -0.733,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.496,
+      "y": -0.996,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.713,
+      "y": -0.811,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.924,
+      "y": -0.977,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.117,
+      "y": -0.641,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.926,
+      "y": -0.553,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.691,
+      "y": -1.164,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.807,
+      "y": -1.337,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.764,
+      "y": -0.72,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.731,
+      "y": -1.044,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.512,
+      "y": -1.199,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.102,
+      "y": -1.134,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.982,
+      "y": -0.768,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.703,
+      "y": -1.41,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.788,
+      "y": -0.937,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.135,
+      "y": -0.634,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.385,
+      "y": -1.098,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.669,
+      "y": -1.387,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.275,
+      "y": -0.898,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.789,
+      "y": -1.07,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.753,
+      "y": -0.945,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.1,
+      "y": -1.103,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.74,
+      "y": -1.142,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.029,
+      "y": -1.098,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.357,
+      "y": -0.94,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.76,
+      "y": -1.098,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.828,
+      "y": -1.149,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.034,
+      "y": -0.995,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.776,
+      "y": -1.006,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.285,
+      "y": -0.727,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.839,
+      "y": -0.91,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.616,
+      "y": -1.074,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.511,
+      "y": -0.571,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.295,
+      "y": -0.833,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.075,
+      "y": -1.018,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.895,
+      "y": -1.332,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.088,
+      "y": -0.644,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.834,
+      "y": -0.984,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.543,
+      "y": -1.303,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.903,
+      "y": -1.136,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.832,
+      "y": -0.901,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.176,
+      "y": -0.98,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.679,
+      "y": -0.991,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.296,
+      "y": -1.085,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.839,
+      "y": -0.774,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.743,
+      "y": -0.868,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.584,
+      "y": -1.156,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.318,
+      "y": -1.365,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.983,
+      "y": -1.29,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.349,
+      "y": -1.021,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.658,
+      "y": -1.28,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.898,
+      "y": -0.892,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.534,
+      "y": -0.84,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.45,
+      "y": -1.023,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.305,
+      "y": -1.232,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.324,
+      "y": -1.143,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.179,
+      "y": -0.751,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": 0.0,
+      "y": -1.425,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.882,
+      "y": -1.25,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.956,
+      "y": -1.095,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.674,
+      "y": -0.646,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.777,
+      "y": -0.998,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.856,
+      "y": -1.021,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.8,
+      "y": -1.122,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.993,
+      "y": -0.976,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.477,
+      "y": -1.091,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.393,
+      "y": -0.858,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.81,
+      "y": -0.776,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.364,
+      "y": -0.993,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.034,
+      "y": -0.752,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.029,
+      "y": -0.917,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -1.034,
+      "y": -0.828,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": -0.981,
+      "y": -0.718,
+      "cluster": 0,
+      "segmento": "Reclutadores de alto volumen"
+    },
+    {
+      "x": 1.574,
+      "y": 0.418,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.047,
+      "y": 0.46,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.147,
+      "y": 0.361,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.433,
+      "y": 0.716,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.438,
+      "y": 1.149,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.706,
+      "y": 0.727,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.758,
+      "y": 0.181,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.053,
+      "y": 0.737,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.298,
+      "y": -0.062,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.192,
+      "y": 0.23,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.713,
+      "y": 0.49,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.185,
+      "y": 0.132,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.533,
+      "y": 0.482,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.347,
+      "y": 1.307,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.041,
+      "y": 0.358,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.99,
+      "y": 0.482,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.641,
+      "y": 0.623,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.927,
+      "y": 0.91,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.168,
+      "y": 1.223,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.226,
+      "y": 0.734,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.46,
+      "y": 0.569,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.822,
+      "y": 0.322,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.313,
+      "y": 0.505,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.542,
+      "y": 0.32,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.367,
+      "y": -0.104,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.001,
+      "y": 0.851,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.879,
+      "y": 0.475,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.013,
+      "y": 0.606,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.411,
+      "y": 1.241,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.435,
+      "y": 0.176,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.334,
+      "y": 0.51,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.589,
+      "y": 0.601,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.591,
+      "y": 1.248,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.747,
+      "y": 1.371,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.499,
+      "y": 0.826,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.295,
+      "y": 0.325,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 0.981,
+      "y": -0.063,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.592,
+      "y": 0.59,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.34,
+      "y": 0.541,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.399,
+      "y": 0.633,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.737,
+      "y": 0.484,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.317,
+      "y": 1.24,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.194,
+      "y": 0.348,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.473,
+      "y": -0.081,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.139,
+      "y": 1.051,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.831,
+      "y": 0.369,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 0.634,
+      "y": 0.626,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.674,
+      "y": -0.357,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.956,
+      "y": 0.13,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.933,
+      "y": 0.406,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.218,
+      "y": -0.091,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.977,
+      "y": 0.587,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.249,
+      "y": 0.473,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.471,
+      "y": 0.841,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.676,
+      "y": -0.229,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.642,
+      "y": 0.555,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.193,
+      "y": 0.438,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.541,
+      "y": 1.089,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.9,
+      "y": 0.841,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.962,
+      "y": 0.151,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 0.974,
+      "y": 0.27,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.895,
+      "y": 0.574,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.502,
+      "y": 0.927,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.291,
+      "y": 0.086,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.882,
+      "y": 0.611,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.199,
+      "y": -0.033,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.615,
+      "y": 0.831,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.757,
+      "y": 0.185,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.401,
+      "y": 0.661,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.115,
+      "y": 0.39,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.868,
+      "y": 0.27,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.546,
+      "y": 0.297,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.989,
+      "y": 0.14,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.269,
+      "y": 0.644,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.377,
+      "y": 0.914,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.465,
+      "y": 0.474,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.662,
+      "y": 0.395,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.539,
+      "y": 0.163,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.708,
+      "y": 0.58,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.382,
+      "y": 0.515,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.279,
+      "y": 0.941,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.5,
+      "y": 0.618,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.738,
+      "y": 0.303,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.793,
+      "y": -0.018,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.22,
+      "y": 0.559,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.201,
+      "y": 0.207,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.258,
+      "y": 0.425,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.694,
+      "y": 0.471,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.577,
+      "y": 0.545,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.018,
+      "y": 0.729,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.382,
+      "y": 0.94,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 0.881,
+      "y": 0.664,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.478,
+      "y": 0.365,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.817,
+      "y": 0.476,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.052,
+      "y": 0.139,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.82,
+      "y": 0.563,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.674,
+      "y": 0.446,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.322,
+      "y": 0.531,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.046,
+      "y": 1.35,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.011,
+      "y": 0.472,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.871,
+      "y": 0.553,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.313,
+      "y": 0.978,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.361,
+      "y": 0.313,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.266,
+      "y": 0.003,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.694,
+      "y": 0.683,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.809,
+      "y": 0.183,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.259,
+      "y": 0.976,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.983,
+      "y": 0.666,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.114,
+      "y": 0.221,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.451,
+      "y": 0.375,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.821,
+      "y": 0.497,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.242,
+      "y": -0.161,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.359,
+      "y": -0.008,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.543,
+      "y": 0.409,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.252,
+      "y": 0.295,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.115,
+      "y": 0.119,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.096,
+      "y": 0.66,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.106,
+      "y": 0.916,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.308,
+      "y": 0.4,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.925,
+      "y": 0.658,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 0.918,
+      "y": 1.248,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.548,
+      "y": 0.571,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.406,
+      "y": 1.338,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.36,
+      "y": 0.273,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.408,
+      "y": 0.53,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.256,
+      "y": 0.404,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.262,
+      "y": 0.603,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.753,
+      "y": 0.493,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.309,
+      "y": 0.727,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.662,
+      "y": 0.321,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 2.058,
+      "y": 0.168,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.612,
+      "y": 0.806,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.876,
+      "y": 0.142,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.866,
+      "y": 0.067,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": 1.356,
+      "y": 0.336,
+      "cluster": 2,
+      "segmento": "Verificadores ocasionales"
+    },
+    {
+      "x": -1.56,
+      "y": 1.425,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.751,
+      "y": 1.052,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.091,
+      "y": 0.435,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.031,
+      "y": 0.144,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.85,
+      "y": 1.045,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.192,
+      "y": 0.34,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -0.776,
+      "y": 0.279,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.198,
+      "y": 0.711,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.035,
+      "y": 0.523,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.823,
+      "y": 0.858,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.055,
+      "y": 0.139,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.773,
+      "y": 0.99,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.283,
+      "y": -0.236,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.265,
+      "y": 1.007,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.594,
+      "y": 0.033,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.041,
+      "y": 0.137,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.232,
+      "y": 0.4,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.784,
+      "y": 1.138,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.194,
+      "y": 0.304,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.698,
+      "y": 0.843,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.1,
+      "y": -0.165,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -0.594,
+      "y": 0.224,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.459,
+      "y": -0.006,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.596,
+      "y": 0.742,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.131,
+      "y": 0.469,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.136,
+      "y": 0.402,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.372,
+      "y": 1.174,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -0.857,
+      "y": 0.283,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -0.767,
+      "y": 1.201,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.309,
+      "y": 0.28,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.457,
+      "y": 0.66,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.161,
+      "y": 0.433,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.523,
+      "y": 0.817,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.382,
+      "y": 0.452,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -1.237,
+      "y": 1.14,
+      "cluster": 3,
+      "segmento": "Instituciones acad\u00e9micas"
+    },
+    {
+      "x": -6.675,
+      "y": 2.398,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -6.284,
+      "y": 2.32,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -5.671,
+      "y": 1.823,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -6.386,
+      "y": 2.43,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -6.326,
+      "y": 1.556,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -5.192,
+      "y": 1.005,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -6.04,
+      "y": 1.701,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -5.086,
+      "y": 0.812,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -6.288,
+      "y": 2.668,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -5.949,
+      "y": 1.092,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -5.158,
+      "y": 1.293,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -6.035,
+      "y": 2.776,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -5.996,
+      "y": 1.393,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -7.362,
+      "y": 3.018,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    },
+    {
+      "x": -6.157,
+      "y": 1.243,
+      "cluster": 1,
+      "segmento": "Patr\u00f3n an\u00f3malo (posible scraping)"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+,ruta,costo_ms,nodos_expandidos,tiempo_us
+BFS,S0 → S2 → S4 → S8 → G,870,10,1.9
+Costo uniforme (UCS),S0 → S1 → S3 → S4 → S5 → S7 → S8 → G,245,9,6.9
+A*,S0 → S1 → S3 → S4 → S5 → S7 → S8 → G,245,8,7.4

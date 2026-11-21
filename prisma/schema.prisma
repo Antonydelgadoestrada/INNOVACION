@@ -1,7 +1,7 @@
 // Prisma Schema para Desarrollo Local y Prototipo (SQLite)
 // Para desplegar a producción con Supabase, use prisma/schema.postgresql.prisma
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 

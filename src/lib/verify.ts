@@ -10,6 +10,8 @@ import { getCredentialFromChain, getExplorerTxUrl } from "./blockchain";
 import { PDFDocument } from "pdf-lib";
 import zlib from "zlib";
 import { generateCertificatePdf, formatIssueDate } from "./pdf";
+import { runAStarPlanner, AiPlannerResult } from "./ai/planner";
+import { assessPdfTamperingRisk, AiPdfRiskResult } from "./ai/pdf-classifier";
 
 export type VerificationStatus = "VALIDA" | "ALTERADA" | "REVOCADA" | "NO_RECONOCIDA";
 
@@ -41,6 +43,9 @@ export interface VerificationEvidence {
   explorerUrl?: string;
   queriedAt: string;
   method: "QR" | "PDF" | "MANUAL_ID";
+  // Módulo de Inteligencia Artificial (Capítulo III)
+  aiPlannerResult?: AiPlannerResult;
+  aiPdfRisk?: AiPdfRiskResult;
 }
 
 /**
@@ -170,6 +175,18 @@ export async function verifyCredential(params: {
   const nowIso = new Date().toISOString();
   const anonymizedIp = calculateSha256(clientIp).slice(0, 16);
 
+  // Módulo de Inteligencia Artificial (Capítulo III)
+  const isPdfFlow = Boolean(params.pdfBuffer);
+  const aiPlannerResult = runAStarPlanner("S0", "G", isPdfFlow);
+  let aiPdfRisk: AiPdfRiskResult | undefined = undefined;
+  if (params.pdfBuffer) {
+    try {
+      aiPdfRisk = await assessPdfTamperingRisk(params.pdfBuffer);
+    } catch (e) {
+      console.warn("Error evaluando riesgo de adulteración con IA:", e);
+    }
+  }
+
   // CASO 1: No hay ID y no se pudo deducir -> NO RECONOCIDA
   if (!queryId) {
     await prisma.verificationLog.create({
@@ -194,6 +211,8 @@ export async function verifyCredential(params: {
       isRevokedOnChain: false,
       queriedAt: nowIso,
       method: method,
+      aiPlannerResult,
+      aiPdfRisk,
     };
   }
 
@@ -235,6 +254,8 @@ export async function verifyCredential(params: {
       isRevokedOnChain: false,
       queriedAt: nowIso,
       method: method,
+      aiPlannerResult,
+      aiPdfRisk,
     };
   }
 
@@ -395,5 +416,7 @@ export async function verifyCredential(params: {
     explorerUrl: getExplorerTxUrl(txHash),
     queriedAt: nowIso,
     method: method,
+    aiPlannerResult,
+    aiPdfRisk,
   };
 }

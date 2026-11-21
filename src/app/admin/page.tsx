@@ -12,6 +12,7 @@ import {
   History,
 } from "lucide-react";
 import { AdminInstitutionActions } from "./AdminInstitutionActions";
+import { AdminAiMonitoring } from "./AdminAiMonitoring";
 
 export const dynamic = "force-dynamic";
 
@@ -237,6 +238,9 @@ export default async function AdminDashboardPage() {
           </table>
         </div>
       </div>
+
+      {/* Módulo de Inteligencia Artificial: Segmentación K-Means y Detección de Anomalías (RF-IA) */}
+      <AdminAiMonitoring />
 
       {/* Registro de Auditoría (RF-15) */}
       <div className="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-4 shadow-xl">

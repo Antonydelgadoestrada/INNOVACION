@@ -29,12 +29,12 @@ async function main() {
     deployedAt: new Date().toISOString(),
   };
 
-  const outputPath = path.join(__dirname, "../deployed-contract.json");
+  const outputPath = path.join(process.cwd(), "deployed-contract.json");
   fs.writeFileSync(outputPath, JSON.stringify(deployInfo, null, 2));
   console.log(`Información de despliegue guardada en: ${outputPath}`);
 
   // Actualizar o verificar la variable NEXT_PUBLIC_CONTRACT_ADDRESS en .env
-  const envPath = path.join(__dirname, "../.env");
+  const envPath = path.join(process.cwd(), ".env");
   if (fs.existsSync(envPath)) {
     let envContent = fs.readFileSync(envPath, "utf-8");
     if (envContent.includes("NEXT_PUBLIC_CONTRACT_ADDRESS=")) {

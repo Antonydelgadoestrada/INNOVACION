@@ -44,8 +44,17 @@ npm run test:crypto
 # 2. Compilar contrato inteligente y ejecutar pruebas en Hardhat
 npm run test:contracts
 
-# 3. Sembrar y validar los 4 estados exactos requeridos (RF-16)
+# 3. Pruebas del Módulo de Inteligencia Artificial (A*, Regresión Logística, K-Means)
+npm run test:ia
+
+# 4. Ejecutar la suite completa de 26 pruebas automáticas
+npm run test:all
+
+# 5. Sembrar y validar los 4 estados exactos requeridos (RF-16)
 npm run seed:scenarios
+
+# 6. (Opcional) Re-generar figuras y tablas del informe con Python
+python verichain_ia.py
 ```
 
 ### 5. Iniciar la Aplicación Web
@@ -117,6 +126,9 @@ El script actualizará automáticamente `NEXT_PUBLIC_CONTRACT_ADDRESS` en tu arc
 | **RF-14** | Panel del Administrador | ✅ Cumplido | `/admin`. Muestra indicadores de instituciones, credenciales y verificaciones por estado que coinciden con la BD. |
 | **RF-15** | Auditoría | ✅ Cumplido | Tabla en `/admin` que audita inicios de sesión, emisiones, revocaciones y aprobaciones de instituciones. |
 | **RF-16** | Pruebas de Escenarios | ✅ Cumplido | `/demo` y script `npm run seed:scenarios`. Valida interactivamente los 4 estados: `VÁLIDA`, `ALTERADA`, `REVOCADA` y `NO RECONOCIDA`. |
+| **RF-17** | Planificación Heurística A* (IA) | ✅ Cumplido | En `/verificar` y `/verificar/[id]`. Ejecuta el planificador sobre el grafo de 10 estados para encontrar la ruta óptima de 245 ms podando ramas costosas. |
+| **RF-18** | Clasificador de Riesgo en PDF (IA) | ✅ Cumplido | En `/verificar` con PDFs. Extrae 8 metadatos en memoria y ejecuta la regresión logística entrenada mostrando porcentaje de riesgo y Odds Ratios. |
+| **RF-19** | Detección de Anomalías K-Means (IA) | ✅ Cumplido | En `/admin`. Agrupa verificadores en 4 clusters ($k=4$), detecta tráfico sospechoso de scraping (Cluster 1) y permite activar Rate Limit y CAPTCHA. |
 
 ### Requerimientos No Funcionales (RNF)
 

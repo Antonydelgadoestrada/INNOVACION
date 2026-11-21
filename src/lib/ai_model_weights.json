@@ -1,0 +1,53 @@
+{
+  "features": [
+    "horas_creacion_modificacion",
+    "actualizaciones_incrementales",
+    "productor_coincide",
+    "fuentes_fuera_plantilla",
+    "objetos_imagen_superpuestos",
+    "firma_digital_presente",
+    "tamano_kb",
+    "dias_desde_emision"
+  ],
+  "scaler_mean": [
+    18.25852,
+    0.49933333333333335,
+    0.7886666666666666,
+    0.5253333333333333,
+    0.5886666666666667,
+    0.7213333333333334,
+    327.4313333333333,
+    922.7273333333334
+  ],
+  "scaler_scale": [
+    42.30937676460858,
+    0.8962883960472148,
+    0.4082542780615478,
+    0.8493281004548373,
+    0.8978520046322903,
+    0.44834312256970726,
+    83.11618345157311,
+    516.3482258317109
+  ],
+  "coefficients": [
+    2.7328683385425596,
+    0.8214975821432642,
+    -0.5540872101017422,
+    0.537596520725867,
+    0.2994419394795245,
+    -0.1373967340597722,
+    0.3134026514148425,
+    -0.021461674070510015
+  ],
+  "intercept": 0.26222191914173604,
+  "odds_ratios": {
+    "horas_creacion_modificacion": 15.376930065701481,
+    "actualizaciones_incrementales": 2.2739026449011837,
+    "productor_coincide": 0.5745965077844214,
+    "fuentes_fuera_plantilla": 1.7118874277280618,
+    "objetos_imagen_superpuestos": 1.3491057148224905,
+    "firma_digital_presente": 0.8716243544583688,
+    "tamano_kb": 1.3680722763786577,
+    "dias_desde_emision": 0.9787669889049165
+  }
+}
