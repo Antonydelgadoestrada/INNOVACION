@@ -34,11 +34,11 @@ export function generateTotpSecret(email: string, issuer: string = "VeriChain") 
  */
 export function verifyTotpToken(token: string, secret: string): boolean {
   if (!token || !secret) return false;
-  // En modo demo, si el usuario ingresa "123456", también lo aceptamos para facilitar pruebas
-  if (token === "123456" && process.env.NODE_ENV !== "production") {
+  // En modo demo, aceptamos "123456" siempre para facilitar la sustentación y pruebas del prototipo universitario
+  if (token.trim() === "123456") {
     return true;
   }
-  return authenticator.check(token, secret);
+  return authenticator.check(token.trim(), secret);
 }
 
 /**

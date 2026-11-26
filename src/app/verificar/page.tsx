@@ -178,6 +178,41 @@ function VerifyPortalContent() {
                   />
                 </div>
 
+                {/* Accesos rápidos de prueba */}
+                <div className="pt-2 pb-1">
+                  <p className="text-[11px] text-slate-400 mb-2 font-medium">IDs de prueba rápida (1 clic):</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => setManualId("11111111-1111-1111-1111-111111111111")}
+                      className="px-2.5 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-[11px] font-semibold border border-emerald-500/20 transition-colors"
+                    >
+                      ✓ Válida (UNI)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setManualId("22222222-2222-2222-2222-222222222222")}
+                      className="px-2.5 py-1 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-[11px] font-semibold border border-amber-500/20 transition-colors"
+                    >
+                      ⚠ Alterada
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setManualId("33333333-3333-3333-3333-333333333333")}
+                      className="px-2.5 py-1 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 text-[11px] font-semibold border border-rose-500/20 transition-colors"
+                    >
+                      ✕ Revocada
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setManualId("99999999-9999-9999-9999-999999999999")}
+                      className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] font-semibold border border-slate-700 transition-colors"
+                    >
+                      ? No Reconocida
+                    </button>
+                  </div>
+                </div>
+
                 <button
                   type="submit"
                   disabled={isSubmitting || !manualId.trim()}

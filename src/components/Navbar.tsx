@@ -64,10 +64,7 @@ export function Navbar() {
       ? [{ href: "/institucion", label: "Mi Panel Institución", icon: Building2 }]
       : user?.role === "ADMIN"
       ? [{ href: "/admin", label: "Panel Administrador", icon: UserCog }]
-      : [
-          { href: "/institucion", label: "Instituciones", icon: Building2 },
-          { href: "/admin", label: "Administrador", icon: UserCog },
-        ]),
+      : []),
   ];
 
   return (

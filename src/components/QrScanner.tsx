@@ -71,29 +71,32 @@ export function QrScanner() {
   return (
     <div className="w-full flex flex-col items-center">
       {/* Contenedor del video de la cámara */}
-      <div className="w-full max-w-sm rounded-2xl overflow-hidden border-2 border-slate-700 bg-slate-950 relative min-h-[280px] flex items-center justify-center">
-        <div id={readerId} className="w-full h-full" />
+      <div className="w-full max-w-md rounded-2xl overflow-hidden border-2 border-slate-700 bg-slate-950 relative min-h-[360px] flex items-center justify-center shadow-xl">
+        <div id={readerId} className="w-full h-full min-h-[360px]" />
 
         {!isScanning && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-3 bg-slate-900/90 backdrop-blur-sm">
-            <div className="w-16 h-16 rounded-2xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400">
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-4 bg-slate-900/95 backdrop-blur-sm z-10">
+            <div className="w-16 h-16 rounded-2xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 shadow-lg shadow-teal-500/10">
               <Camera className="w-8 h-8" />
             </div>
-            <div>
-              <p className="text-sm font-bold text-slate-200">
+            <div className="space-y-1">
+              <p className="text-base font-bold text-white">
                 Escáner de Código QR
               </p>
-              <p className="text-xs text-slate-400 mt-1">
-                Apunta la cámara al código QR impreso en el certificado oficial
+              <p className="text-xs text-slate-300 max-w-xs leading-relaxed">
+                Apunta la cámara de tu celular o laptop al código QR impreso en el certificado oficial
               </p>
             </div>
             <button
               onClick={startScanner}
               type="button"
-              className="px-5 py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-teal-500/25 flex items-center gap-2"
+              className="px-6 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider transition-all shadow-lg shadow-teal-500/30 flex items-center gap-2 hover:scale-105 active:scale-95"
             >
               <Camera className="w-4 h-4" /> Activar Cámara
             </button>
+            <p className="text-[11px] text-slate-400">
+              Requiere otorgar permisos de cámara al navegador
+            </p>
           </div>
         )}
       </div>
