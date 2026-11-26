@@ -2,11 +2,16 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { QrScanner } from "@/components/QrScanner";
-import { PdfDropzone } from "@/components/PdfDropzone";
-import { StatusBadge } from "@/components/StatusBadge";
-import { EvidenceCard } from "@/components/EvidenceCard";
-import { VerificationEvidence } from "@/lib/verify";
+import dynamic from "next/dynamic";
+import { PdfDropzone } from "../../components/PdfDropzone";
+import { StatusBadge } from "../../components/StatusBadge";
+import { EvidenceCard } from "../../components/EvidenceCard";
+import type { VerificationEvidence } from "@/lib/verify";
+
+const QrScanner = dynamic(
+  () => import("../../components/QrScanner").then((mod) => mod.QrScanner),
+  { ssr: false }
+);
 import {
   QrCode,
   FileText,

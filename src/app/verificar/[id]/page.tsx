@@ -1,6 +1,6 @@
 import { verifyCredential } from "@/lib/verify";
-import { StatusBadge } from "@/components/StatusBadge";
-import { EvidenceCard } from "@/components/EvidenceCard";
+import { StatusBadge } from "../../../components/StatusBadge";
+import { EvidenceCard } from "../../../components/EvidenceCard";
 import Link from "next/link";
 import { ArrowLeft, RefreshCw, QrCode } from "lucide-react";
 

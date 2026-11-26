@@ -1,6 +1,6 @@
 "use client";
 
-import { VerificationEvidence } from "@/lib/verify";
+import type { VerificationEvidence } from "@/lib/verify";
 import {
   ExternalLink,
   CheckCircle2,

@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { DEMO_IDS } from "@/lib/constants";
-import { StatusBadge } from "@/components/StatusBadge";
-import { EvidenceCard } from "@/components/EvidenceCard";
-import { VerificationEvidence } from "@/lib/verify";
+import { StatusBadge } from "../../components/StatusBadge";
+import { EvidenceCard } from "../../components/EvidenceCard";
+import type { VerificationEvidence } from "@/lib/verify";
 import {
   FlaskConical,
   CheckCircle2,
