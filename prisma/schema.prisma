@@ -1,8 +1,8 @@
-// Prisma Schema para Desarrollo Local y Prototipo (SQLite)
-// Para desplegar a producción con Supabase, use prisma/schema.postgresql.prisma
+// Prisma Schema para Desarrollo Local y Producción (PostgreSQL en Supabase)
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 generator client {
@@ -41,7 +41,7 @@ model Credential {
   dataHash            String            // SHA-256 del JSON canónico con sal (hex)
   signature           String            // Firma digital Ed25519 (hex)
   fileHash            String            // SHA-256 del archivo PDF generado (hex)
-  pdfPath             String?           // Ruta o URL del PDF
+  pdfPath             String?           // Ruta o URL del PDF en almacenamiento Supabase
   status              String            @default("ACTIVE") // ACTIVE, REVOKED
   revokeReason        String?           // Motivo de revocación
   txHash              String?           // Hash de la transacción en Blockchain

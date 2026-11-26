@@ -19,7 +19,8 @@
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
     "seed": "tsx prisma/seed.ts",
-    "seed:scenarios": "tsx scripts/seed-demo-scenarios.ts"
+    "seed:scenarios": "tsx scripts/seed-demo-scenarios.ts",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.21.1",

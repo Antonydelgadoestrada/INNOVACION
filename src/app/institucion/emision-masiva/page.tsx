@@ -21,11 +21,19 @@ export default function BulkIssuePage() {
   const [result, setResult] = useState<any | null>(null);
 
   useEffect(() => {
-    fetch("/api/admin/institutions")
+    fetch("/api/auth/me")
       .then((res) => res.json())
       .then((data) => {
-        const approved = data.find((i: any) => i.status === "APPROVED");
-        if (approved) setInstitutionId(approved.id);
+        if (data.authenticated && data.user?.institutionId) {
+          setInstitutionId(data.user.institutionId);
+        } else {
+          return fetch("/api/admin/institutions")
+            .then((res) => res.json())
+            .then((insts) => {
+              const approved = insts.find((i: any) => i.status === "APPROVED");
+              if (approved) setInstitutionId(approved.id);
+            });
+        }
       })
       .catch(console.error);
   }, []);

@@ -17,7 +17,7 @@ export interface SessionData {
   isMfaVerified: boolean;
 }
 
-const SESSION_COOKIE_NAME = "verichain_session";
+export const SESSION_COOKIE_NAME = "verichain_session";
 const SESSION_SECRET = process.env.MASTER_ENCRYPTION_KEY || "default-secret-key-verichain-32bytes-len";
 
 /**
@@ -63,25 +63,38 @@ export function verifyPassword(password: string, storedHash: string): boolean {
 }
 
 /**
- * Encripta el objeto de sesión para almacenarlo en una cookie segura
+ * Encripta el objeto de sesión para almacenarlo en una cookie segura.
+ * Incluye un encabezado legible en Base64URL para middleware Edge, cifrado con AES-256-GCM.
  */
 export function encodeSession(data: SessionData): string {
+  const header = Buffer.from(
+    JSON.stringify({
+      userId: data.userId,
+      role: data.role,
+      email: data.email,
+      institutionId: data.institutionId,
+    })
+  ).toString("base64url");
+
   const text = JSON.stringify(data);
   const iv = crypto.randomBytes(12);
   const key = crypto.createHash("sha256").update(SESSION_SECRET).digest();
   const cipher = crypto.createCipheriv("aes-256-gcm", key, iv);
   const encrypted = Buffer.concat([cipher.update(text, "utf-8"), cipher.final()]);
   const tag = cipher.getAuthTag();
-  return `${iv.toString("hex")}:${tag.toString("hex")}:${encrypted.toString("hex")}`;
+
+  return `${header}.${iv.toString("hex")}:${tag.toString("hex")}:${encrypted.toString("hex")}`;
 }
 
 /**
- * Desencripta el token de sesión de la cookie
+ * Desencripta el token de sesión de la cookie y valida su integridad
  */
 export function decodeSession(token: string): SessionData | null {
   try {
-    const [ivHex, tagHex, encryptedHex] = token.split(":");
+    const cipherPart = token.includes(".") ? token.split(".")[1] : token;
+    const [ivHex, tagHex, encryptedHex] = cipherPart.split(":");
     if (!ivHex || !tagHex || !encryptedHex) return null;
+
     const iv = Buffer.from(ivHex, "hex");
     const tag = Buffer.from(tagHex, "hex");
     const encrypted = Buffer.from(encryptedHex, "hex");
@@ -106,7 +119,7 @@ export async function getSession(): Promise<SessionData | null> {
 }
 
 /**
- * Establece la cookie de sesión
+ * Establece la cookie de sesión segura
  */
 export async function setSession(data: SessionData) {
   const token = encodeSession(data);
@@ -121,7 +134,7 @@ export async function setSession(data: SessionData) {
 }
 
 /**
- * Cierra la sesión
+ * Cierra la sesión eliminando la cookie
  */
 export async function clearSession() {
   const cookieStore = cookies();

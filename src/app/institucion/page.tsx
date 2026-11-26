@@ -1,4 +1,6 @@
 import { prisma } from "@/lib/prisma";
+import { getSession } from "@/lib/auth";
+import { redirect } from "next/navigation";
 import Link from "next/link";
 import {
   Building2,
@@ -23,9 +25,14 @@ export default async function InstitutionDashboardPage({
 }: {
   searchParams?: { q?: string; status?: string };
 }) {
-  // Obtener institución principal aprobada (UNI)
-  const institution = await prisma.institution.findFirst({
-    where: { status: "APPROVED" },
+  const session = await getSession();
+  if (!session || session.role !== "INSTITUTION") {
+    redirect("/auth/login?role=institucion");
+  }
+
+  // Obtener la institución específica que ha iniciado sesión
+  let institution = await prisma.institution.findUnique({
+    where: { id: session.institutionId || session.userId },
     include: {
       credentials: {
         include: {
@@ -38,18 +45,34 @@ export default async function InstitutionDashboardPage({
     },
   });
 
+  if (!institution && session.email) {
+    institution = await prisma.institution.findUnique({
+      where: { email: session.email },
+      include: {
+        credentials: {
+          include: {
+            _count: {
+              select: { verificationLogs: true },
+            },
+          },
+          orderBy: { createdAt: "desc" },
+        },
+      },
+    });
+  }
+
   if (!institution) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-16 text-center space-y-4">
-        <h1 className="text-2xl font-bold text-white">No hay institución aprobada activa</h1>
+        <h1 className="text-2xl font-bold text-white">Institución no encontrada</h1>
         <p className="text-sm text-slate-400">
-          Por favor ingresa al panel de administrador para aprobar una institución o ejecuta el seed.
+          La sesión actual no está vinculada a un registro de institución válido.
         </p>
         <Link
-          href="/admin"
+          href="/auth/login?role=institucion"
           className="inline-block px-5 py-2.5 rounded-xl bg-teal-500 text-slate-950 font-bold text-xs uppercase"
         >
-          Ir al Panel Administrador
+          Iniciar Sesión Nuevamente
         </Link>
       </div>
     );

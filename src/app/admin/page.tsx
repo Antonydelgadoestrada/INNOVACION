@@ -1,4 +1,6 @@
 import { prisma } from "@/lib/prisma";
+import { getSession } from "@/lib/auth";
+import { redirect } from "next/navigation";
 import {
   UserCog,
   Building2,
@@ -17,6 +19,11 @@ import { AdminAiMonitoring } from "./AdminAiMonitoring";
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboardPage() {
+  const session = await getSession();
+  if (!session || session.role !== "ADMIN") {
+    redirect("/auth/login?role=admin");
+  }
+
   // 1. Obtener datos de la base de datos (RF-14)
   const institutions = await prisma.institution.findMany({
     orderBy: { createdAt: "desc" },
