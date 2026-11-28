@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { AdminInstitutionActions } from "./AdminInstitutionActions";
 import { AdminAiMonitoring } from "./AdminAiMonitoring";
+import { AdminReportsModal } from "./AdminReportsModal";
 
 export const dynamic = "force-dynamic";
 
@@ -79,7 +80,12 @@ export default async function AdminDashboardPage() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3 flex-wrap">
+          <AdminReportsModal
+            totalInstitutions={institutions.length}
+            totalCredentials={totalCredentials}
+            totalVerifications={totalVerifications}
+          />
           {pendingCount > 0 ? (
             <span className="px-3 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold animate-pulse">
               ⚠️ {pendingCount} Institución(es) pendiente(s)

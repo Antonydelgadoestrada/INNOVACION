@@ -17,6 +17,7 @@ import {
   Ban,
   Clock,
 } from "lucide-react";
+import { InstitutionReportsModal } from "./InstitutionReportsModal";
 
 export const dynamic = "force-dynamic";
 
@@ -125,7 +126,13 @@ export default async function InstitutionDashboardPage({
         </div>
 
         {/* Quick Action buttons */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5 flex-wrap">
+          <InstitutionReportsModal
+            institutionName={institution.name}
+            totalIssued={totalIssued}
+            activeCount={activeCount}
+            revokedCount={revokedCount}
+          />
           <Link
             href="/institucion/emitir"
             className="px-4 py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-teal-500/20 flex items-center gap-2"
